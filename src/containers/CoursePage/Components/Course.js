@@ -2,54 +2,109 @@ import React, { useContext } from "react";
 import appContext from "../../appContext";
 export default function Course(props) {
   const { store } = useContext(appContext);
-  console.log('store.course iss');
-  console.log(store.course)
+  console.log("store.course iss");
+  console.log(store.course);
 
-  
   return (
     <div>
       <div className="page-wrapper">
-            <div className="container-fluid">
-              {/* ============================================================== */}
-              {/* Start Page Content */}
-              {/* ============================================================== */}
-              <div className="row">
-                <div className="col-12">
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="card-title mb-0">Static Table</h5>
+        {/* ============================================================== */}
+        {/* Bread crumb and right sidebar toggle */}
+        {/* ============================================================== */}
+        <div className="page-breadcrumb">
+          <div className="row">
+            <div className="col-12 d-flex no-block align-items-center">
+              <h4 className="page-title">Full Width</h4>
+              <div className="ms-auto text-end">
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <a href="#">Home</a>
+                    </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                      Library
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* ============================================================== */}
+        {/* End Bread crumb and right sidebar toggle */}
+        {/* ============================================================== */}
+        {/* ============================================================== */}
+        {/* Container fluid  */}
+        {/* ============================================================== */}
+        <div className="container-fluid">
+          {/* ============================================================== */}
+          {/* Start Page Content */}
+          {/* ============================================================== */}
+          <div className="row el-element-overlay">
+            {store.course.map((item)=>(<div className="col-lg-3 col-md-6">
+              <div className="card">
+                <div className="el-card-item">
+                  <div className="el-card-avatar el-overlay-1">
+                    {" "}
+                    {/* <img src="../../assets/images/big/img1.jpg" alt="user" /> */}
+                    {/* <img src="http://localhost:3000/img/courses/1" alt="user" /> */}
+                    <img src="https://img-c.udemycdn.com/course/240x135/851712_fc61_6.jpg" alt="user" />
+                    <div className="el-overlay">
+                      <ul className="list-style-none el-info">
+                        <li className="el-item">
+                          <a
+                            className="btn default btn-outline image-popup-vertical-fit el-link"
+                            href="../../assets/images/big/img1.jpg"
+                          >
+                            <i className="mdi mdi-magnify-plus" />
+                          </a>
+                        </li>
+                        <li className="el-item">
+                          <a
+                            className="btn default btn-outline el-link"
+                            href="javascript:void(0);"
+                          >
+                            <i className="mdi mdi-link" />
+                          </a>
+                        </li>
+                      </ul>
                     </div>
-                    <table className="table">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">DoB</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          {/* {store.learner.map((item)=>(
-                             <tr>
-                             <th scope="row">{item.user_id}</th>
-                             <td>{item.user_name}</td>
-                             <td>{item.user_email}</td>
-                             <td>{item.user_dob}</td>
-                           </tr>
-
-                          ))}; */}
-                      </tbody>
-                    </table>
+                  </div>
+                  <div className="el-card-content">
+                    <h4 className="mb-0">{item.course_name}</h4>{" "}
+                    <span className="text-muted">{item.course_shortdescription}</span>
+                    <br/>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
-              </div>
-            </div>
-
-            <footer className="footer text-center">
-              All Rights Reserved by Matrix-admin. Designed and Developed by{" "}
-              <a href="https://www.wrappixel.com">WrapPixel</a>.
-            </footer>
+            </div>))}
           </div>
+          {/* ============================================================== */}
+          {/* End PAge Content */}
+          {/* ============================================================== */}
+          {/* ============================================================== */}
+          {/* Right sidebar */}
+          {/* ============================================================== */}
+          {/* .right-sidebar */}
+          {/* ============================================================== */}
+          {/* End Right sidebar */}
+          {/* ============================================================== */}
+        </div>
+        {/* ============================================================== */}
+        {/* End Container fluid  */}
+        {/* ============================================================== */}
+        {/* ============================================================== */}
+        {/* footer */}
+        {/* ============================================================== */}
+        <footer className="footer text-center">
+          All Rights Reserved by Matrix-admin. Designed and Developed by{" "}
+          <a href="https://www.wrappixel.com">WrapPixel</a>.
+        </footer>
+        {/* ============================================================== */}
+        {/* End footer */}
+        {/* ============================================================== */}
+      </div>
+    </div>
   );
 }
