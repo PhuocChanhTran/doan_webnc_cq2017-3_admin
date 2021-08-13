@@ -6,8 +6,8 @@ import "./App.css";
 
 function App() {
   // return <LecturePage/>;
-  return <CoursePage/>;
-  //  return <LearnerPage/>;
+  // return <CoursePage/>;
+   return <LearnerPage/>;
 }
 
 export default App;

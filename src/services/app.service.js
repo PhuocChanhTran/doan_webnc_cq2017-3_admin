@@ -6,7 +6,7 @@ export function getAllCourse() {
 export function getCourseSingleCourse(courseId){
     return axios.get(`/courses/${courseId}`);
 }
-
+/*  */
 export function getAllLearner(){
     return axios.get(`/users/all-learner`);
 }
@@ -14,4 +14,11 @@ export function getAllLearner(){
 export function getAllLecture(){
     return axios.get(`/users/all-lecture`);
 }
+export function delUser(user_id){
+    console.log('vao delete user service');
+    return axios.delete(`/users/delete-user`,{data:{
+        user_id: user_id
+    }});
+}
+
 
