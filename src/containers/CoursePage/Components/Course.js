@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
+
 import appContext from "../../appContext";
 import { delCourse } from "../../../services/app.service";
 
 export default function Course(props) {
   const { store, dispatch } = useContext(appContext);
+  const link="http://localhost:3000/courses/";
   console.log("store.course iss");
   console.log(store.course);
   const btnDel_Click = async function (course_id) {
     const res = await delCourse(course_id);
-    console.log("userid sau khi xoa la:");
-    console.log(course_id);
-
     if (res.status === 200) {
       dispatch({
         type: "delCourse",
@@ -20,7 +19,6 @@ export default function Course(props) {
       });
     }
   };
-
   return (
     <div>
       <div className="page-wrapper">
@@ -96,15 +94,25 @@ export default function Course(props) {
                         {item.course_shortdescription}
                       </span>
                       <br />
-                      <button
-                            type="button"
-                            class="btn btn-primary"
-                            onClick={()=>btnDel_Click(item.course_id)}
-                          >
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                          </button>
+                      <div class="d-flex  justify-content-center">
+                        <a
+                          name=""
+                          id=""
+                          className="btn btn-primary  border"
+                          href={link+item.course_id}
+                          role="button"
+                        >
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
 
-                      {/* <i class="fa fa-trash" aria-hidden="true"></i> */}
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={() => btnDel_Click(item.course_id)}
+                        >
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

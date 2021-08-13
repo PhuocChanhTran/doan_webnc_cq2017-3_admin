@@ -23,21 +23,21 @@ export default function appReducer(state, action) {
         console.log("case delLearner");
         return {
           ...state,
-          learner:state.learner.filter(el=>el.user_id != action.payload.user_id )
+          learner:state.learner.filter(el=>el.user_id !== action.payload.user_id )
         }
       }
       case 'delLecture':{
         console.log("case delLecture");
         return {
           ...state,
-          lecture:state.lecture.filter(el=>el.user_id != action.payload.user_id )
+          lecture:state.lecture.filter(el=>el.user_id !== action.payload.user_id )
         }
       }
       case 'delCourse':{
         console.log("case delCourse");
         return {
           ...state,
-          course:state.course.filter(el=>el.course_id != action.payload.course_id )
+          course:state.course.filter(el=>el.course_id !==action.payload.course_id )
         }
       }
       default:
