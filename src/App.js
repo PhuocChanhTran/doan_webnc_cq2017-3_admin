@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LearnerPage from "./containers/LearnerPage/LearnerPage";
 import CoursePage from "./containers/CoursePage/CoursePage";
 import LecturePage from "./containers/LecturePage/LecturePage";
+import AddLecturePage from "./containers/AddLecturePage/AddLecturePage";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route exact path="/course">
           <CoursePage />
+        </Route>
+        <Route exact path="/add-lecture">
+          <AddLecturePage />
         </Route>
       </Switch>
     </Router>

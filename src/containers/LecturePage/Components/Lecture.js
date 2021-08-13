@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import appContext from "../../appContext";
 import { delUser } from "../../../services/app.service";
 
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link,useHistory } from "react-router-dom";
 
 export default function Lecture(props) {
   const { store, dispatch } = useContext(appContext);
+  const history = useHistory();
+
   // console.log('store.initlearner iss');
   // console.log(store.learner)
   const btnDel_Click = async function (user_id) {
@@ -22,6 +24,10 @@ export default function Lecture(props) {
       });
     }
   };
+  const btnAdd_Click = function()
+  {
+    history.push("/add-lecture")
+  }
 
   return (
     <div>
@@ -40,21 +46,25 @@ export default function Lecture(props) {
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     Add
                     </Link> */}
-                    <Link to="/">
+                    <Link to="/add-lecture">
                       <i class="fa fa-plus" aria-hidden="true"></i>
                       Add
                     </Link>
+                    <button
+                            type="button"
+                            class="btn btn-primary"
+                            onClick={btnAdd_Click}
+                          >
+                          <i class="fa fa-plus" aria-hidden="true"></i>
 
-                    {/* <a class="btn btn-default" href="https://www.google.com/" role="button">
-                    Add
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                  </a> */}
+                          </button>
                   </Router>
                 </div>
                 <table className="table">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
+                      <th scope="col">LectureAccount</th>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
                       <th scope="col">DoB</th>
@@ -64,6 +74,7 @@ export default function Lecture(props) {
                     {store.lecture.map((item) => (
                       <tr>
                         <th scope="row">{item.user_id}</th>
+                        <td>{item.user_username}</td>
                         <td>{item.user_name}</td>
                         <td>{item.user_email}</td>
                         <td>{item.user_dob}</td>

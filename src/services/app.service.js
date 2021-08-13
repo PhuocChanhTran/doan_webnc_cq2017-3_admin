@@ -25,5 +25,16 @@ export function delCourse(course_id){
         course_id: course_id
     }});
 }
+export function registerAccount(user){
+    return axios.post('/auth/lecturer-register',{
+        user_username: user.username,
+        user_password: user.password,
+        user_name: user.fullname,
+        user_firstname:user.firstname,
+        user_lastname:user.lastname,
+        user_email:user.email,
+        // user_dob: user.dob
+    });
+}
 
 

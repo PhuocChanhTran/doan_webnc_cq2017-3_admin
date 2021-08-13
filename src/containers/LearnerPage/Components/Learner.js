@@ -37,6 +37,7 @@ export default function Learner(props) {
                   <thead>
                     <tr>
                       <th scope="col">#</th>
+                      <th scope="col">LearnerAccount</th>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
                       <th scope="col">DoB</th>
@@ -47,6 +48,7 @@ export default function Learner(props) {
                       <tr>
                         {/* <th scope="row">{item.user_id}</th> */}
                         <th scope="row">{item.user_id}</th> 
+                        <td>{item.user_username}</td>
                         <td>{item.user_name}</td>
                         <td>{item.user_email}</td>
                         <td>{item.user_dob}</td>
@@ -61,7 +63,6 @@ export default function Learner(props) {
                         </td>
                       </tr>
                     ))}
-                    ;
                   </tbody>
                 </table>
               </div>
