@@ -45,6 +45,7 @@ export default function Learner(props) {
                   <tbody>
                     {store.learner.map((item) => (
                       <tr>
+                        {/* <th scope="row">{item.user_id}</th> */}
                         <th scope="row">{item.user_id}</th> 
                         <td>{item.user_name}</td>
                         <td>{item.user_email}</td>

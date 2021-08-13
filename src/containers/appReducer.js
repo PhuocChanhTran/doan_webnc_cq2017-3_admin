@@ -26,6 +26,13 @@ export default function appReducer(state, action) {
           learner:state.learner.filter(el=>el.user_id != action.payload.user_id )
         }
       }
+      case 'delLecture':{
+        console.log("case delLecture");
+        return {
+          ...state,
+          lecture:state.lecture.filter(el=>el.user_id != action.payload.user_id )
+        }
+      }
       default:
         return state;
     }

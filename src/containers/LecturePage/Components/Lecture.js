@@ -1,12 +1,27 @@
 import React, { useContext } from "react";
 import appContext from "../../appContext";
+import { delUser } from "../../../services/app.service";
 
-import {BrowserRouter as Router,Link} from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default function Lecture(props) {
-  const { store } = useContext(appContext);
+  const { store, dispatch } = useContext(appContext);
   // console.log('store.initlearner iss');
   // console.log(store.learner)
+  const btnDel_Click = async function (user_id) {
+    const res = await delUser(user_id);
+    console.log("userid sau khi xoa la:");
+    console.log(user_id);
+
+    if (res.status === 200) {
+      dispatch({
+        type: "delLecture",
+        payload: {
+          user_id,
+        },
+      });
+    }
+  };
 
   return (
     <div>
@@ -20,17 +35,17 @@ export default function Lecture(props) {
               <div className="card">
                 <div className="card-body">
                   <Router>
-                  <h5 className="card-title mb-0">Static Table</h5>
-                  {/* <Link className="d-flex justify-content-between" to="/">
+                    <h5 className="card-title mb-0">Static Table</h5>
+                    {/* <Link className="d-flex justify-content-between" to="/">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     Add
                     </Link> */}
-                  <Link to="/">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    Add
+                    <Link to="/">
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                      Add
                     </Link>
 
-                  {/* <a class="btn btn-default" href="https://www.google.com/" role="button">
+                    {/* <a class="btn btn-default" href="https://www.google.com/" role="button">
                     Add
                     <i class="fa fa-plus" aria-hidden="true"></i>
                   </a> */}
@@ -53,10 +68,14 @@ export default function Lecture(props) {
                         <td>{item.user_email}</td>
                         <td>{item.user_dob}</td>
                         <td>
-                               <button type="button" class="btn btn-primary">
-                                  <i class="fa fa-trash" aria-hidden="true" ></i>
-                               </button>
-                             </td>
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            onClick={() => btnDel_Click(item.user_id)}
+                          >
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          </button>
+                        </td>
                       </tr>
                     ))}
                     ;

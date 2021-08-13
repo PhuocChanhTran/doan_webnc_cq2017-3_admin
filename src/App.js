@@ -5,9 +5,9 @@ import React from "react";
 import "./App.css";
 
 function App() {
-  // return <LecturePage/>;
+  return <LecturePage/>;
   // return <CoursePage/>;
-   return <LearnerPage/>;
+  //  return <LearnerPage/>;
 }
 
 export default App;
