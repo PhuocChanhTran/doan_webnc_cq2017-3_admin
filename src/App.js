@@ -5,8 +5,8 @@ import React from "react";
 import "./App.css";
 
 function App() {
-  return <LecturePage/>;
-  // return <CoursePage/>;
+  // return <LecturePage/>;
+  return <CoursePage/>;
   //  return <LearnerPage/>;
 }
 

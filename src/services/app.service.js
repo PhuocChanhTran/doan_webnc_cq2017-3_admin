@@ -20,5 +20,10 @@ export function delUser(user_id){
         user_id: user_id
     }});
 }
+export function delCourse(course_id){
+    return axios.delete(`/courses/delete`,{data:{
+        course_id: course_id
+    }});
+}
 
 

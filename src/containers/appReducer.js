@@ -33,6 +33,13 @@ export default function appReducer(state, action) {
           lecture:state.lecture.filter(el=>el.user_id != action.payload.user_id )
         }
       }
+      case 'delCourse':{
+        console.log("case delCourse");
+        return {
+          ...state,
+          course:state.course.filter(el=>el.course_id != action.payload.course_id )
+        }
+      }
       default:
         return state;
     }
