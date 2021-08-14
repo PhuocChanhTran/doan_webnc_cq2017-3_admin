@@ -5,6 +5,7 @@ import LearnerPage from "./containers/LearnerPage/LearnerPage";
 import CoursePage from "./containers/CoursePage/CoursePage";
 import LecturePage from "./containers/LecturePage/LecturePage";
 import AddLecturePage from "./containers/AddLecturePage/AddLecturePage";
+import CategoryPage from "./containers/CategoryPage/CategoryPage";
 import "./App.css";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route exact path="/add-lecture">
           <AddLecturePage />
+        </Route>
+        <Route exact path="/category">
+          <CategoryPage/>
         </Route>
       </Switch>
     </Router>

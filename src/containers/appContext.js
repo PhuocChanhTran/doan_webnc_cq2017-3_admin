@@ -4,6 +4,7 @@ const defaultValue = {
     learner:[],
     lecture:[],
     course:[],
+    category:[]
 };
 const appContext = createContext(defaultValue);
 

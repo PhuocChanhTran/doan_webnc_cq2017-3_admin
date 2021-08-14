@@ -19,6 +19,11 @@ export default function appReducer(state, action) {
           ...state,
           course: action.payload.course,
         }
+      case 'initCategory':
+        return {
+          ...state,
+          category: action.payload.category,
+        }
       case 'delLearner':{
         console.log("case delLearner");
         return {

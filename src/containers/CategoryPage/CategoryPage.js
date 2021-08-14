@@ -5,44 +5,43 @@ import "../../App.css";
 import appReducer from "../appReducer";
 import appContext from "../appContext";
 
-import { getAllLearner } from "../../services/app.service";
+import { getAllCategory } from "../../services/app.service";
 
 import Header from "../Header";
 import LeftSide from "../LeftSide";
-import AddLecture from "./Components/AddLecture";
+import Category from "./Components/Category";
 
 
-export default function AddLecturePage(props) {
+export default function CategoryPage(props) {
   const initialAppState = {
-    learner: [],
+    category: [],
   };
 
   const [store, dispatch] = useReducer(appReducer, initialAppState);
-  // useEffect(function () {
-  //   async function loadAllLearner() {
-  //     const res = await getAllLearner();
-  //     // console.log('list learner');
-  //     // console.log(res.data);
-  //     if (res.status === 200) {
-  //       dispatch({
-  //         type: "initLearner",
-  //         payload: {
-  //           learner: res.data,
-  //         },
-  //       });
-  //     }
-  //     if (res.status === 204) {
-  //       dispatch({
-  //         type: "initLearner",
-  //         payload: {
-  //           learn: null,
-  //         },
-  //       });
-  //     }
-  //   }
-  //   loadAllLearner();
-  // }, []);
-  console.log('lecturepgaee')
+  useEffect(function () {
+    async function loadAllCategory() {
+      const res = await getAllCategory();
+      // console.log('list learner');
+      // console.log(res.data);
+      if (res.status === 200) {
+        dispatch({
+          type: "initCategory",
+          payload: {
+            category: res.data,
+          },
+        });
+      }
+      if (res.status === 204) {
+        dispatch({
+          type: "initCategory",
+          payload: {
+            category: null,
+          },
+        });
+      }
+    }
+    loadAllCategory();
+  }, []);
 
   return (
     <div>
@@ -51,12 +50,12 @@ export default function AddLecturePage(props) {
           {/* ============================================================== */}
           {/* Preloader - style you can find in spinners.css */}
           {/* ============================================================== */}
-          {/* <div className="preloader">
+          <div className="preloader">
             <div className="lds-ripple">
               <div className="lds-pos" />
               <div className="lds-pos" />
             </div>
-          </div> */}
+          </div>
           {/* ============================================================== */}
           {/* Main wrapper - style you can find in pages.scss */}
           {/* ============================================================== */}
@@ -83,7 +82,7 @@ export default function AddLecturePage(props) {
 
             {/* ============================================================== */}
             {/* End Left Sidebar - style you can find in sidebar.scss  */}
-            <AddLecture />
+            <Category />
             {/* ============================================================== */}
             {/* ============================================================== */}
             {/* Page wrapper  */}

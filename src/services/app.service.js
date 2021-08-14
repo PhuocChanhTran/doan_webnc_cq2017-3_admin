@@ -14,6 +14,9 @@ export function getAllLearner(){
 export function getAllLecture(){
     return axios.get(`/users/all-lecture`);
 }
+export function getAllCategory(){
+    return axios.get(`/category/all`);
+}
 export function delUser(user_id){
     console.log('vao delete user service');
     return axios.delete(`/users/delete-user`,{data:{
