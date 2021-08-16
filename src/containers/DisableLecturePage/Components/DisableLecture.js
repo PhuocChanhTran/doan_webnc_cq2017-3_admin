@@ -4,7 +4,7 @@ import { delUser,disableUser } from "../../../services/app.service";
 
 import { BrowserRouter as Router, Link,useHistory } from "react-router-dom";
 
-export default function Lecture(props) {
+export default function DisableLecture(props) {
   const { store, dispatch } = useContext(appContext);
   const history = useHistory();
 
@@ -36,13 +36,9 @@ export default function Lecture(props) {
       });
     }
   };
-  const btnAdd_Click = function()
+  const btnBack_Click = function()
   {
-    history.push("/add-lecture")
-  }
-  const btnListDisable_Click = function()
-  {
-    history.push("/disable-lecture")
+    history.push("/lecture")
   }
 
   return (
@@ -59,18 +55,11 @@ export default function Lecture(props) {
                   <Router>
                     <button
                             type="button"
-                            className="btn btn-primary "
-                            onClick={btnAdd_Click}
-                          >
-                          <i className="fa fa-plus" aria-hidden="true"></i>
-
-                          </button>
-                    <button
-                            type="button"
                             className="btn btn-primary disablebtn"
-                            onClick={btnListDisable_Click}
+                            onClick={btnBack_Click}
+                            fab
                           >
-                            DisableList
+                            <i className="fa fa-backward" aria-hidden="true"></i>
                           </button>
                   </Router>
                 </div>
@@ -85,7 +74,7 @@ export default function Lecture(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {store.lecture.map((item) => (
+                    {store.disableLecture.map((item) => (
                       <tr>
                         <th scope="row">{item.user_id}</th>
                         <td>{item.user_username}</td>
@@ -98,7 +87,7 @@ export default function Lecture(props) {
                             class="btn btn-primary"
                             onClick={() => btnDisable_Click(item.user_id)}
                           >
-                            Disable
+                            Undisable
                           </button>
                         </td>
                         <td>

@@ -1,20 +1,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, NavLink } from "react-router-dom";
-import { registerAccount } from "../../../services/app.service";
+import { addCategory } from "../../../services/app.service";
 import Swal from "sweetalert2";
-function AddLecture() {
+function AddCategory() {
   const history = useHistory();
   const { register, handleSubmit } = useForm();
-  const onSubmit = async function (user) {
-	  console.log("user of sm");
-    console.log(user);
+  const onSubmit = async function (category) {
+	  console.log("category of sm");
+    console.log(category);
 	try{
-		const res = await registerAccount(user);
+		const res = await addCategory(category);
 		console.log(res.data);  
 		if(res.status === 200){
 			Swal.fire({
-				title: "Add Lecturer Fail!!!",
+				title: "Add Category Fail!!!",
 				icon: "error",
 				text: `${res.data.message}`,
 				confirmButtonText: "OK",
@@ -22,15 +22,15 @@ function AddLecture() {
 		}
 		if(res.status  === 201){
 			Swal.fire({
-				title: "Add Lecturer Success!!!.",
+				title: "Add Category Success.",
 				showCancelButton: true,
 				confirmButtonText: `OK`
 			}).then((result) => {
-				/* Read more about isConfirmed, isDenied below */
-				if (result.isConfirmed) {
-					localStorage.usernameVerify = user.username;  
-					// history.push('/verify');
-				} 
+				// /* Read more about isConfirmed, isDenied below */
+				// if (result.isConfirmed) {
+				// 	localStorage.usernameVerify = user.username;  
+				// 	// history.push('/verify');
+				// } 
 			})
 		}
 	}
@@ -47,7 +47,7 @@ function AddLecture() {
               <div className="col-12 col-sm-12 col-md-12 wow fadeInUp column-top-login">
                 <div className="main-box-top-title">
                   <h1 className="title-main-page font-48 text-center">
-                     New Lecturer
+                     New Category
                   </h1>
                 </div>
               </div>
@@ -58,33 +58,33 @@ function AddLecture() {
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                       <label htmlFor="inputRegisterForm-username">
-                        Username
+                        Category Name
                       </label>
                       <input
                         type="text"
                         className="form-control"
                         id="inputRegisterForm-username"
                         placeholder="nguyenvana"
-                        {...register("username")}
+                        {...register("category_name")}
                         required
                       ></input>
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputRegisterForm-username">
-                        Full Name
+                        Subject
                       </label>
                       <input
                         type="text"
                         className="form-control"
                         id="inputRegisterForm-fullname"
                         placeholder="Nguyen Van A"
-                        {...register("fullname")}
+                        {...register("subject_id")}
                         required
                       ></input>
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputRegisterForm-username">
-                        First Name
+                        Category Description
                       </label>
                       <input
                         type="text"
@@ -167,4 +167,4 @@ function AddLecture() {
     </div>
   );
 }
-export default AddLecture;
+export default AddCategory;

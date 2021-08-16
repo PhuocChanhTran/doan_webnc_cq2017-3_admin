@@ -47,18 +47,6 @@ export default function LearnerPage(props) {
     <div>
       <appContext.Provider value={{ store, dispatch }}>
         <div>
-          {/* ============================================================== */}
-          {/* Preloader - style you can find in spinners.css */}
-          {/* ============================================================== */}
-          <div className="preloader">
-            <div className="lds-ripple">
-              <div className="lds-pos" />
-              <div className="lds-pos" />
-            </div>
-          </div>
-          {/* ============================================================== */}
-          {/* Main wrapper - style you can find in pages.scss */}
-          {/* ============================================================== */}
           <div
             id="main-wrapper"
             data-layout="vertical"

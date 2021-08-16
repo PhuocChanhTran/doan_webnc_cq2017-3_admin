@@ -5,16 +5,16 @@ import "../../App.css";
 import appReducer from "../appReducer";
 import appContext from "../appContext";
 
-import { getAllLearner } from "../../services/app.service";
+// import { getAllLearner } from "../../services/app.service";
 
 import Header from "../Header";
 import LeftSide from "../LeftSide";
-import AddLecture from "./Components/AddLecture";
+import AddCategory from "./Components/AddCategory";
 
 
 export default function AddLecturePage(props) {
   const initialAppState = {
-    learner: [],
+    category: [],
   };
 
   const [store, dispatch] = useReducer(appReducer, initialAppState);
@@ -42,7 +42,7 @@ export default function AddLecturePage(props) {
   //   }
   //   loadAllLearner();
   // }, []);
-  console.log('lecturepgaee')
+  console.log('Add lecturepgaee')
 
   return (
     <div>
@@ -59,7 +59,7 @@ export default function AddLecturePage(props) {
           >
             <Header />
             <LeftSide />
-            <AddLecture />
+            <AddCategory/>
           </div>
         </div>
       </appContext.Provider>

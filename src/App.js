@@ -6,6 +6,8 @@ import CoursePage from "./containers/CoursePage/CoursePage";
 import LecturePage from "./containers/LecturePage/LecturePage";
 import AddLecturePage from "./containers/AddLecturePage/AddLecturePage";
 import CategoryPage from "./containers/CategoryPage/CategoryPage";
+import AddCategoryPage from "./containers/AddCategoryPage/AddCategoryPage";
+import DisableLecturePage from "./containers/DisableLecturePage/DisableLecturePage";
 import "./App.css";
 
 function App() {
@@ -26,6 +28,12 @@ function App() {
         </Route>
         <Route exact path="/category">
           <CategoryPage/>
+        </Route>
+        <Route exact path="/add-category">
+          <AddCategoryPage/>
+        </Route>
+        <Route exact path="/disable-lecture">
+          <DisableLecturePage/>
         </Route>
       </Switch>
     </Router>

@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+.button-custom{
+  background-color:rgb(22, 22, 22);
+  display: inline-block;
+  width: 100%;
+}
+.disablebtn{
+  margin-left: 5pt;
+  margin-right: 5pt;
+}

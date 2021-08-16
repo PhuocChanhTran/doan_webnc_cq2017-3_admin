@@ -14,6 +14,11 @@ export default function appReducer(state, action) {
           ...state,
           lecture: action.payload.lecture,
         }
+      case 'initDisableLecture':
+        return {
+          ...state,
+          disableLecture: action.payload.disableLecture,
+        }
       case 'initCourse':
         return {
           ...state,
@@ -45,7 +50,17 @@ export default function appReducer(state, action) {
           course:state.course.filter(el=>el.course_id !==action.payload.course_id )
         }
       }
+      case 'disableLecture':{
+        console.log("case disableLecture");
+        return {
+          ...state,
+          // lecture:state.lecture.map(el=>el.user_id===action.payload.user_id ?
+          //   {...el,user_isdisable:1} : el ),
+          lecture:state.lecture.filter(el=>el.user_id !== action.payload.user_id)
+        }
+      }
       default:
         return state;
+        
     }
   }

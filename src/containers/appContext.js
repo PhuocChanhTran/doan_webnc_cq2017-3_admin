@@ -3,6 +3,7 @@ import { createContext } from 'react';
 const defaultValue = {
     learner:[],
     lecture:[],
+    disableLecture:[],
     course:[],
     category:[]
 };

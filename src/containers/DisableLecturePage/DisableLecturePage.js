@@ -5,42 +5,42 @@ import "../../App.css";
 import appReducer from "../appReducer";
 import appContext from "../appContext";
 
-import { getAllLecture } from "../../services/app.service";
+import { getDisableLecture } from "../../services/app.service";
 
 import Header from "../Header";
 import LeftSide from "../LeftSide";
-import Lecture from "./Components/Lecture";
+import DisableLecture from "./Components/DisableLecture";
 
 
-export default function LecturePage(props) {
+export default function DisableLecturePage(props) {
   const initialAppState = {
-    lecture: [],
+    disableLecture: [],
   };
 
   const [store, dispatch] = useReducer(appReducer, initialAppState);
   useEffect(function () {
-    async function loadAllLecture() {
-      const res = await getAllLecture();
+    async function loadAllDisableLecture() {
+      const res = await getDisableLecture();
       // console.log('list learner');
       // console.log(res.data);
       if (res.status === 200) {
         dispatch({
-          type: "initLecture",
+          type: "initDisableLecture",
           payload: {
-            lecture: res.data,
+            disableLecture: res.data,
           },
         });
       }
       if (res.status === 204) {
         dispatch({
-          type: "initLecture",
+          type: "initDisableLecture",
           payload: {
-            lecture: null,
+            disableLecture: null,
           },
         });
       }
     }
-    loadAllLecture();
+    loadAllDisableLecture();
   }, []);
 
   return (
@@ -82,7 +82,7 @@ export default function LecturePage(props) {
 
             {/* ============================================================== */}
             {/* End Left Sidebar - style you can find in sidebar.scss  */}
-            <Lecture/>
+            <DisableLecture/>
             {/* ============================================================== */}
             {/* ============================================================== */}
             {/* Page wrapper  */}
