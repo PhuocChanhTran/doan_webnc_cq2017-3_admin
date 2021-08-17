@@ -4,6 +4,7 @@ const defaultValue = {
     learner:[],
     lecture:[],
     disableLecture:[],
+    disableLearner:[],
     course:[],
     category:[]
 };

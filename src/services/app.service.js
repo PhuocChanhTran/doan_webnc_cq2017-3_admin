@@ -62,3 +62,6 @@ export function unDisableUser(userId){
 export function getDisableLecture(){
   return axios.get("/users/all-disable-lecture");
 }
+export function getDisableLearner(){
+  return axios.get("/users/all-disable-learner");
+}
