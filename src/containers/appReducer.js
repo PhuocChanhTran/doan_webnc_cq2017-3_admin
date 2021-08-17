@@ -59,6 +59,14 @@ export default function appReducer(state, action) {
           lecture:state.lecture.filter(el=>el.user_id !== action.payload.user_id)
         }
       }
+      case 'unDisableLecture':{
+        console.log("case UndisableLecture");
+        return {
+          ...state,
+          disableLecture:state.disableLecture.filter(el=>el.user_id !== action.payload.user_id)
+          
+        }
+      }
       default:
         return state;
         

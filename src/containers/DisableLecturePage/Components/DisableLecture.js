@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import appContext from "../../appContext";
-import { delUser,disableUser } from "../../../services/app.service";
+import { delUser,unDisableUser } from "../../../services/app.service";
 
 import { BrowserRouter as Router, Link,useHistory } from "react-router-dom";
 
@@ -23,13 +23,13 @@ export default function DisableLecture(props) {
       });
     }
   };
-  const btnDisable_Click = async function (user_id) {
-    const res = await disableUser(user_id);
+  const btnUnDisable_Click = async function (user_id) {
+    const res = await unDisableUser(user_id);
     console.log(user_id);
 
     if (res.status === 200) {
       dispatch({
-        type: "disableLecture",
+        type: "unDisableLecture",
         payload: {
           user_id,
         },
@@ -85,7 +85,7 @@ export default function DisableLecture(props) {
                           <button
                             type="button"
                             class="btn btn-primary"
-                            onClick={() => btnDisable_Click(item.user_id)}
+                            onClick={() => btnUnDisable_Click(item.user_id)}
                           >
                             Undisable
                           </button>

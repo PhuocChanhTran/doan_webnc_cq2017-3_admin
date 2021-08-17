@@ -54,6 +54,11 @@ export function disableUser(userId){
     userId: userId,
   });
 }
+export function unDisableUser(userId){
+  return axios.patch("/users/undisable", {
+    userId: userId,
+  });
+}
 export function getDisableLecture(){
   return axios.get("/users/all-disable-lecture");
 }
