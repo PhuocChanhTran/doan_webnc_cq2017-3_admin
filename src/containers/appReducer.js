@@ -55,6 +55,13 @@ export default function appReducer(state, action) {
           course:state.course.filter(el=>el.course_id !==action.payload.course_id )
         }
       }
+      case 'delCategory':{
+        console.log("case delCategory");
+        return {
+          ...state,
+          category:state.category.filter(el=>el.category_id !==action.payload.category_id )
+        }
+      }
       case 'disableLecture':{
         console.log("case disableLecture");
         return {
@@ -62,6 +69,18 @@ export default function appReducer(state, action) {
           // lecture:state.lecture.map(el=>el.user_id===action.payload.user_id ?
           //   {...el,user_isdisable:1} : el ),
           lecture:state.lecture.filter(el=>el.user_id !== action.payload.user_id)
+        }
+      }
+      case 'disableCourse':{
+        console.log("case disableCourse");
+        return {
+          ...state,
+          course:state.course.map(el=>el.course_id===action.payload.course_id ?
+            {...el,course_isdisable:1} : el ),
+          
+
+          // course:state.course.filter(el=>el.course_id !== action.payload.course_id)
+
         }
       }
       case 'disableLearner':{

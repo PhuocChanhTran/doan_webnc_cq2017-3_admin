@@ -131,7 +131,7 @@ function AddLecture() {
                       ></input>
                     </div>
 
-                    <div className="custom-control custom-checkbox">
+                    {/* <div className="custom-control custom-checkbox">
                       <input
                         type="checkbox"
                         className="custom-control-input"
@@ -145,18 +145,18 @@ function AddLecture() {
                         I have read the{" "}
                         <NavLink to="/terms">Terms and Conditions.</NavLink>
                       </label>
-                    </div>
+                    </div> */}
                     <div className="login-submit margin-top-15">
-                      <button className="btn sub-login full-width-btn center">
-                        Register{" "}
+                      <button className="btn sub-login full-width-btn center btn btn-primary">
+                        ADD{" "}
                       </button>
                     </div>
-                    <div className="login-facebook margin-top-35">
+                    {/* <div className="login-facebook margin-top-35">
                       <p className="social-fb">
                         Have an account?{" "}
                         <NavLink to="/login">Login now!</NavLink>
                       </p>
-                    </div>
+                    </div> */}
                   </form>
                 </div>
               </div>

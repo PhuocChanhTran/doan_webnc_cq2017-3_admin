@@ -54,6 +54,11 @@ export function disableUser(userId){
     userId: userId,
   });
 }
+export function disableCourse(course_id){
+  return axios.patch("/courses/disable", {
+    course_id: course_id,
+  });
+}
 export function unDisableUser(userId){
   return axios.patch("/users/undisable", {
     userId: userId,
@@ -64,4 +69,14 @@ export function getDisableLecture(){
 }
 export function getDisableLearner(){
   return axios.get("/users/all-disable-learner");
+}
+export function getNumberCourseOfCategory(category_id){
+  return axios.get(`courses/total/category/${category_id}`);
+}
+export function deleteCategory(category_id) {
+  return axios.delete(`/category/delete`, {
+    data: {
+      category_id: category_id,
+    },
+  });
 }

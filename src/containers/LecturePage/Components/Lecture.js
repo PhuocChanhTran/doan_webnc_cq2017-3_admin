@@ -47,9 +47,6 @@ export default function Lecture(props) {
     <div>
       <div className="page-wrapper">
         <div className="container-fluid">
-          {/* ============================================================== */}
-          {/* Start Page Content */}
-          {/* ============================================================== */}
           <div className="row">
             <div className="col-12">
               <div className="card">

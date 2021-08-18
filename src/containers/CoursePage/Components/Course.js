@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 
 import appContext from "../../appContext";
-import { delCourse } from "../../../services/app.service";
+import { delCourse,disableCourse} from "../../../services/app.service";
 
 export default function Course(props) {
   const { store, dispatch } = useContext(appContext);
-  const link="http://localhost:3000/courses/";
+  const link = "http://localhost:3000/courses/";
   console.log("store.course iss");
   console.log(store.course);
   const btnDel_Click = async function (course_id) {
@@ -13,6 +13,17 @@ export default function Course(props) {
     if (res.status === 200) {
       dispatch({
         type: "delCourse",
+        payload: {
+          course_id,
+        },
+      });
+    }
+  };
+  const btnDisable_Click = async function (course_id) {
+    const res = await disableCourse(course_id);
+    if (res.status === 200) {
+      dispatch({
+        type: "disableCourse",
         payload: {
           course_id,
         },
@@ -55,7 +66,7 @@ export default function Course(props) {
           {/* Start Page Content */}
           {/* ============================================================== */}
           <div className="row el-element-overlay">
-            {store.course.map((item) => (
+            {store.course.map((item) => item.course_isdisable ===0?(
               <div className="col-lg-3 col-md-6">
                 <div className="card">
                   <div className="el-card-item">
@@ -99,7 +110,7 @@ export default function Course(props) {
                           name=""
                           id=""
                           className="btn btn-primary  border"
-                          href={link+item.course_id}
+                          href={link + item.course_id}
                           role="button"
                         >
                           <i class="fa fa-eye" aria-hidden="true"></i>
@@ -107,17 +118,25 @@ export default function Course(props) {
 
                         <button
                           type="button"
-                          className="btn btn-primary"
+                          className="btn btn-primary border"
                           onClick={() => btnDel_Click(item.course_id)}
                         >
                           <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-primary border"
+                          onClick={() => btnDisable_Click(item.course_id)}
+                        >
+                          Disable
+                          {/* <i class="fa fa-trash" aria-hidden="true"></i> */}
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+            ):'')}
           </div>
           {/* ============================================================== */}
           {/* End PAge Content */}
