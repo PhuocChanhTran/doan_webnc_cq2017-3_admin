@@ -6,6 +6,9 @@ export function getAllCourse() {
 export function getCourseSingleCourse(courseId) {
   return axios.get(`/courses/${courseId}`);
 }
+export function getCategoryById(category_id) {
+  return axios.get(`/category/${category_id}`);
+}
 /*  */
 export function getAllLearner() {
   return axios.get(`/users/all-learner`);
@@ -63,6 +66,9 @@ export function unDisableUser(userId){
   return axios.patch("/users/undisable", {
     userId: userId,
   });
+}
+export function editCategory(cat){
+  return axios.patch("/category/edit",cat);
 }
 export function getDisableLecture(){
   return axios.get("/users/all-disable-lecture");

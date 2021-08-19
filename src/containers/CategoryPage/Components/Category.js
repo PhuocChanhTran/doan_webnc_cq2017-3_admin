@@ -6,9 +6,11 @@ import { deleteCategory,getNumberCourseOfCategory } from "../../../services/app.
 
 export default function Category(props) {
   const { store, dispatch } = useContext(appContext);
-  const history = useHistory();
+  console.log('store o category page la');
+  console.log(store);
+  console.log('store o category page la');
 
-  // console.log(store.learner)
+  const history = useHistory();
   const btnDel_Click = async function (category_id) {
     const res = await deleteCategory(category_id);
     if (res.status === 200) {
@@ -20,21 +22,10 @@ export default function Category(props) {
       });
     }
   };
-  const btnEdit_Click = async function (user_id) {
-    // const res = await delUser(user_id);
-    const res=10;
-    
-    console.log("userid sau khi xoa la:");
-    console.log(user_id);
-
-    if (res.status === 200) {
-      dispatch({
-        type: "delLearner",
-        payload: {
-          user_id,
-        },
-      });
-    }
+  const btnEdit_Click = async function (item) {
+    localStorage.setItem('myData', {
+      "a":1})
+    history.push(`/edit-category?id=${item.category_id}`)
   };
   const numberCourseOfCategory = async function () {
     const res = await getNumberCourseOfCategory();
@@ -82,7 +73,7 @@ export default function Category(props) {
                           <button
                             type="button"
                             class="btn"
-                            onClick={() => btnEdit_Click(item.category_id)}
+                            onClick={() => btnEdit_Click(item)}
                           >
                             <i class="fas fa-edit "></i>
                           </button>

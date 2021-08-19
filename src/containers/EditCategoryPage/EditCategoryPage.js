@@ -5,43 +5,43 @@ import "../../App.css";
 import appReducer from "../appReducer";
 import appContext from "../appContext";
 
-// import { getAllLearner } from "../../services/app.service";
+import { getAllCategory } from "../../services/app.service";
 
 import Header from "../Header";
 import LeftSide from "../LeftSide";
-import AddCategory from "./Components/AddCategory";
+import EditCategory from "./Components/EditCategory";
 
 
-export default function AddCategoryPage(props) {
+export default function EditCategoryPage(props) {
   const initialAppState = {
     category: [],
   };
 
   const [store, dispatch] = useReducer(appReducer, initialAppState);
-  // useEffect(function () {
-  //   async function loadAllLearner() {
-  //     const res = await getAllLearner();
-  //     // console.log('list learner');
-  //     // console.log(res.data);
-  //     if (res.status === 200) {
-  //       dispatch({
-  //         type: "initLearner",
-  //         payload: {
-  //           learner: res.data,
-  //         },
-  //       });
-  //     }
-  //     if (res.status === 204) {
-  //       dispatch({
-  //         type: "initLearner",
-  //         payload: {
-  //           learn: null,
-  //         },
-  //       });
-  //     }
-  //   }
-  //   loadAllLearner();
-  // }, []);
+  useEffect(function () {
+    async function loadAllCategory() {
+      const res = await getAllCategory();
+      // console.log('list learner');
+      // console.log(res.data);
+      if (res.status === 200) {
+        dispatch({
+          type: "initCategory",
+          payload: {
+            category: res.data,
+          },
+        });
+      }
+      if (res.status === 204) {
+        dispatch({
+          type: "initCategory",
+          payload: {
+            category: null,
+          },
+        });
+      }
+    }
+    loadAllCategory();
+  }, []);
   console.log('Add lecturepgaee')
 
   return (
@@ -59,7 +59,7 @@ export default function AddCategoryPage(props) {
           >
             <Header />
             <LeftSide />
-            <AddCategory/>
+            <EditCategory/>
           </div>
         </div>
       </appContext.Provider>

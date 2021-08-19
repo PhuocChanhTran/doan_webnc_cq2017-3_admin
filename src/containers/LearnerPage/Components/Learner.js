@@ -7,8 +7,10 @@ import { delUser,disableUser } from "../../../services/app.service";
 export default function Learner(props) {
   const { store, dispatch } = useContext(appContext);
   const history = useHistory();
+  console.log('store learner laf:')
+  console.log(store.learner);
+  console.log('store learner laf:')
 
-  // console.log(store.learner)
   const btnDel_Click = async function (user_id) {
     const res = await delUser(user_id);
     console.log("userid sau khi xoa la:");
@@ -39,6 +41,10 @@ export default function Learner(props) {
   const btnListDisable_Click = function () {
     history.push("/disable-learner");
   };
+  console.log('store ben learner');
+  console.log(store);
+  console.log('store ben learner');
+
 
   return (
     <div>
