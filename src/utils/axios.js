@@ -15,5 +15,37 @@ axios.interceptors.request.use(function (config) {
   config.headers["x-access-token"] = token ? `${token}` : "";
   return config;
 });
+// Add a response interceptor
+axios.interceptors.response.use(
+  (res) => {
+    return res;
+  },
+  async (err) => {
+    const originalConfig = err.config;
 
+    if (originalConfig.url !== "/auth/login" && err.response) {
+      // Access Token was expired
+      if (err.response.status === 401 && !originalConfig._retry) {
+        originalConfig._retry = true;
+
+        try {
+          let accessToken = localStorage.getItem("accessToken");
+          let refreshToken = localStorage.getItem("refreshToken");
+          const rs = await axios.post("auth/refresh", {
+            accessToken:accessToken,
+            refreshToken: refreshToken,
+          });
+
+          localStorage.accessToken = rs.data.accessToken;  
+
+          return axios(originalConfig);
+        } catch (_error) {
+          return Promise.reject(_error);
+        }
+      }
+    }
+
+    return Promise.reject(err);
+  }
+);
 export default axios;

@@ -1,3 +1,4 @@
+import {sortCourseByCategoryFunction,sortCourseByLecturerFunction} from '../services/app.service'
 export default function appReducer(state, action) {
   console.log('action tyoe laf laf laf laf la fla ff iu  ')
   // console.log({action,state})
@@ -28,6 +29,18 @@ export default function appReducer(state, action) {
         return {
           ...state,
           course: action.payload.course,
+          backupCourse:  action.payload.course,
+        }
+      case 'courseFilter':
+        let tempCourses = state.backupCourse;
+        if(action.payload.filterType === "byCategory"){
+          tempCourses = tempCourses.sort(sortCourseByCategoryFunction);
+        }else if(action.payload.filterType === "byLecturer"){
+          tempCourses = tempCourses.sort(sortCourseByLecturerFunction);
+        }
+        return {
+          ...state,
+          course: tempCourses
         }
       case 'initCategory':
         return {

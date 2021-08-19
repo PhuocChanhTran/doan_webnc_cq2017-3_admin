@@ -1,6 +1,13 @@
 import React from "react";
-
+import { useHistory } from "react-router";
 export default function Header(props) {
+  const history = useHistory();
+  const btnLogout_Clicked = () =>{
+    delete localStorage.userEmail;
+    delete localStorage.accessToken;
+    delete localStorage.refreshToken;
+    history.push("/login");
+  }
   return (
     <div>
       <header className="topbar" data-navbarbg="skin5">
@@ -314,7 +321,7 @@ export default function Header(props) {
                     <i className="ti-settings me-1 ms-1" /> Account Setting
                   </a>
                   <div className="dropdown-divider" />
-                  <a className="dropdown-item" href="javascript:void(0)">
+                  <a onClick={btnLogout_Clicked} className="dropdown-item" href="javascript:void(0)">
                     <i className="fa fa-power-off me-1 ms-1" /> Logout
                   </a>
                   <div className="dropdown-divider" />

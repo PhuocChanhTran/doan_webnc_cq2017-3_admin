@@ -11,38 +11,42 @@ import EditCategoryPage from "./containers/EditCategoryPage/EditCategoryPage";
 import DisableLecturePage from "./containers/DisableLecturePage/DisableLecturePage";
 import DisableLearnerPage from "./containers/DisableLearnerPage/DisableLearnerPage";
 import "./App.css";
-
+import AdminLogin from "./containers/Auth/AdminLogin";
+import {LoginRoute} from "./utils/customRoute"
 function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        <LoginRoute exact path="/">
           <LearnerPage />
+        </LoginRoute>
+        <Route exact path="/login">
+          <AdminLogin />
         </Route>
-        <Route exact path="/lecture">
+        <LoginRoute exact path="/lecture">
           <LecturePage />
-        </Route>
-        <Route exact path="/course">
+        </LoginRoute>
+        <LoginRoute exact path="/course">
           <CoursePage />
-        </Route>
-        <Route exact path="/add-lecture">
+        </LoginRoute>
+        <LoginRoute exact path="/add-lecture">
           <AddLecturePage />
-        </Route>
-        <Route exact path="/category">
+        </LoginRoute>
+        <LoginRoute exact path="/category">
           <CategoryPage/>
-        </Route>
-        <Route exact path="/add-category">
+        </LoginRoute>
+        <LoginRoute exact path="/add-category">
           <AddCategoryPage/>
-        </Route>
-        <Route  path="/edit-category">
+        </LoginRoute>
+        <LoginRoute  path="/edit-category">
           <EditCategoryPage/>
-        </Route>
-        <Route exact path="/disable-lecture">
+        </LoginRoute>
+        <LoginRoute exact path="/disable-lecture">
           <DisableLecturePage/>
-        </Route>
-        <Route exact path="/disable-learner">
+        </LoginRoute>
+        <LoginRoute exact path="/disable-learner">
           <DisableLearnerPage/>
-        </Route>
+        </LoginRoute>
       </Switch>
     </Router>
   );

@@ -12,6 +12,7 @@ import { useHistory, NavLink } from "react-router-dom";
 import { addCategory,getCategoryById,editCategory} from "../../../services/app.service";
 import Swal from "sweetalert2";
 function EditCategory() {
+  const [isEdit,setIsEdit] = useState(false);
   const { store, dispatch } = useContext(appContext);
   // console.log('store learner lafyyyyyy:')
   // console.log(store.category);
@@ -26,10 +27,20 @@ function EditCategory() {
   // console.log('store category abchjk');
   // console.log(store.category)
   // console.log('store categoryabchjk');
-
-  var result = store.category.filter(obj => {
+  let result = store.category.filter(obj => {
     return obj.category_id == id
   })
+  // var result = store.category.filter(obj => {
+  //   return obj.category_id == id
+  // })
+  useEffect(function(){
+    if(isEdit===true){
+      result = store.category.filter(obj => {
+        return obj.category_id == id
+      })
+    }
+    setIsEdit(false)
+  },[isEdit,setIsEdit])
   // console.log('type of result');
   // console.log(typeof(result));
 
@@ -41,11 +52,11 @@ function EditCategory() {
   console.log('loc ket qua');
   
   const { register, handleSubmit } = useForm();
-  const onSubmit = async function (category) {
-    console.log("category of sm");
-    console.log(category);
+  const onSubmit = async function (data) {
+    console.log("category of sm",data); 
     try {
-      const res = await editCategory(category);
+      setIsEdit(true);
+      const res = await editCategory(id,data.category_name);
       console.log(res.data);
       if (res.status !== 200) {
         Swal.fire({
@@ -58,8 +69,7 @@ function EditCategory() {
       if (res.status === 200) {
         Swal.fire({
           title: "Edit Category Success.",
-          showCancelButton: true,
-          confirmButtonText: `OK`,
+          icon:"success"
         }).then((result) => {
           // /* Read more about isConfirmed, isDenied below */
           // if (result.isConfirmed) {
@@ -67,6 +77,7 @@ function EditCategory() {
           // 	// history.push('/verify');
           // }
         });
+        history.push('/category')
       }
     } catch (err) {
       console.log(err);
@@ -103,8 +114,7 @@ function EditCategory() {
 
                          defaultValue = {result[0]?result[0].category_id:""}
                         //  placeholder={store.cate.category_name}
-                        {...register("category_id")}
-                        required
+                       readOnly
                       ></input>
                     </div>
                     <div className="form-group">
@@ -136,8 +146,7 @@ function EditCategory() {
                         defaultValue = {result[0]?result[0].subject_id:""}
                         // placeholder={result[0].category_name}
                         //  placeholder={store.cate.category_na
-                        {...register("subject_id")}
-                        required
+                        readOnly
                       ></input>
                     </div>
                     {/* <div className="form-group">

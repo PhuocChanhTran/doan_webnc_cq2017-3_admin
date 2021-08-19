@@ -23,6 +23,7 @@ export default function CategoryPage(props) {
       const res = await getAllCategory();
       // console.log('list learner');
       // console.log(res.data);
+      console.log("Reload cate data");
       if (res.status === 200) {
         dispatch({
           type: "initCategory",

@@ -14,6 +14,7 @@ import Course from "./Components/Course";
 
 export default function CoursePage(props) {
   const initialAppState = {
+    backupCourse:[],
     course: [],
   };
 

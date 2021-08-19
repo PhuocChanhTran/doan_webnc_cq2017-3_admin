@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext,useState, useEffect } from "react";
 
 import appContext from "../../appContext";
 import { delCourse,disableCourse} from "../../../services/app.service";
+import { FormSelect, Row} from 'react-bootstrap'
+import Swal from "sweetalert2";
 
 export default function Course(props) {
   const { store, dispatch } = useContext(appContext);
@@ -20,16 +22,48 @@ export default function Course(props) {
     }
   };
   const btnDisable_Click = async function (course_id) {
-    const res = await disableCourse(course_id);
-    if (res.status === 200) {
-      dispatch({
-        type: "disableCourse",
-        payload: {
-          course_id,
-        },
-      });
-    }
+    
+    Swal.fire({
+      title: 'Do you want to disable this course?',
+      showCancelButton: true,
+      confirmButtonText: `Disable`,
+    }).then(async(result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        const res = await disableCourse(course_id);
+        if (res.status === 200) {
+          dispatch({
+            type: "disableCourse",
+            payload: {
+              course_id,
+            },
+          });
+        }
+        Swal.fire('Disable!', '', 'success')
+      }
+    })
   };
+  const [courseFilter,setCourseFilter] = useState({filterType: "default"});
+  useEffect(function(){
+    console.log(courseFilter);
+    dispatch({
+        type: 'courseFilter',
+        payload:{
+            ...courseFilter
+        }
+    })
+  },[courseFilter])
+  const handleCourseFilterChange = (e)=> {
+    console.log(e.target.value);
+    // setSearchFilter((prevState)=>({
+    //     ...prevState,
+    //     ["categoryId"]:e.target.value
+    // }));
+    setCourseFilter({
+        ...courseFilter,
+        ["filterType"]:e.target.value
+    });
+  }
   return (
     <div>
       <div className="page-wrapper">
@@ -40,6 +74,11 @@ export default function Course(props) {
           <div className="row">
             <div className="col-12 d-flex no-block align-items-center">
               <h4 className="page-title">Full Width</h4>
+              <span><FormSelect onChange={(e)=>handleCourseFilterChange(e)} defaultValue="default" style={{width:"150px"}}>
+                  <option value="default">Default</option>
+                  <option value="byCategory">Sort by Category</option>
+                  <option value="byLecturer">Sort by Lecturer</option>
+                </FormSelect></span>
               <div className="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb">

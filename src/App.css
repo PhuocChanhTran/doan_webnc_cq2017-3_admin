@@ -45,3 +45,163 @@
   margin-left: 5pt;
   margin-right: 5pt;
 }
+/* //login css */
+
+.form-group select option {
+  color: #fff;
+}
+.form-bistkey .form-subscribe button {
+  padding-bottom: 8px;
+  padding-top: 10px;
+}
+.form-bistkey .full-width-btn {
+  display: block;
+  width: 100%;
+}
+.form-subscribe button:hover {
+  background: #af4220;
+}
+.main-conten-text a:hover {
+  color: #0077e2;
+  text-decoration: none;
+}
+.margin-top-15 {
+  margin-top: 15px;
+}
+.margin-top-35 {
+  margin-top: 35px;
+}
+.color-orange {
+  color: #ff683a;
+}
+.form-subscribe button {
+  background: #006eed;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 13px 29px;
+  line-height: 16px;
+  padding-top: 15px;
+}
+.form-bistkey .form-subscribe .form-control {
+  background-color:rgba(70, 88, 108, 0.5);
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  padding: 12px 15px;
+  line-height: 16px;
+  padding-top: 13px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #a1b0c2;
+  min-height: 46px;
+}
+.form-bistkey .form-subscribe label {
+  font-size: 12px;
+  font-weight: 600;
+}
+.form-subscribe .form-control::placeholder {
+  color: #788995;
+}
+.form-subscribe .form-control:-ms-input-placeholder {
+  color: #788995;
+}
+.form-subscribe .form-control::-ms-input-placeholder {
+  color: #788995;
+}
+
+.ticket-submit {
+  float: right;
+  width: 70%;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.2em;
+  padding-top: 16px;
+  text-transform: uppercase;
+  margin: 20px 0 50px 0;
+}
+.login-submit {
+  overflow: hidden;
+  width: 100%;
+}
+.sub-account {
+  width: 50%;
+  float: left;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 1em;
+}
+.sub-login {
+  float: right;
+  width: 40%;
+}
+.social-fb {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+.sub-fb {
+  width: 100%;
+}
+.sub-account a {
+  color: #ff683a;
+  text-decoration: underline;
+}
+.custom-checkbox label.custom-control-label {
+  padding-top: 3px;
+  cursor: pointer;
+}
+.form-bistkey .form-subscribe label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+  .margin-top-35 {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 767px){
+  .margin-top-35 {
+    margin-top: 15px;
+  }
+}
+@media (max-width: 480px) {
+  .sub-account {
+    margin-top: 0;
+  }
+}
+@media (min-width: 768px){
+  .login-content-page {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .sign-up-content-page {
+    max-width: 440px;
+    margin: 0 auto;
+    
+  }
+}
+
+.sign-up-content-page{
+  color: #a1b0c2;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #0d1725;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.login-content-page{
+  color: #a1b0c2;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #0d1725;
+  padding-top: 30px;
+  padding-bottom: 200px;
+}
+.login-page-content{
+  height: auto;
+  background-color: #0d1725;
+  
+}

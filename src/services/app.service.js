@@ -67,8 +67,10 @@ export function unDisableUser(userId){
     userId: userId,
   });
 }
-export function editCategory(cat){
-  return axios.patch("/category/edit",cat);
+export function editCategory(catId,cateName){
+  return axios.patch(`/category/${catId}`,{
+    categoryName: cateName
+  });
 }
 export function getDisableLecture(){
   return axios.get("/users/all-disable-lecture");
@@ -85,4 +87,38 @@ export function deleteCategory(category_id) {
       category_id: category_id,
     },
   });
+}
+
+export function adminLogin(username, password){
+  return axios.post("/auth/admin/login",{
+    username,password
+  })
+}
+
+export function parseJwt(token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+
+  return JSON.parse(jsonPayload);
+};
+
+export function sortCourseByCategoryFunction(a, b) {
+  if (a.category_id === b.category_id) {
+      return 0;
+  }
+  else {
+      return (a.category_id > b.category_id) ? -1 : 1;
+  }
+}
+
+export function sortCourseByLecturerFunction(a, b) {
+  if (a.user_id === b.user_id) {
+    return 0;
+  }
+  else {
+      return (a.user_id > b.user_id) ? -1 : 1;
+  }
 }
