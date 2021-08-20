@@ -77,7 +77,7 @@ export default function Lecture(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {store.lecture.map((item) => (
+                    {store.lecture?store.lecture.map((item) => (
                       <tr>
                         <th scope="row">{item.user_id}</th>
                         <td>{item.user_username}</td>
@@ -103,7 +103,7 @@ export default function Lecture(props) {
                           </button>
                         </td>
                       </tr>
-                    ))}
+                    )):""}
                     ;
                   </tbody>
                 </table>
