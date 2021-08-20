@@ -67,7 +67,7 @@ export default function Category(props) {
                       <tr>
                         <th scope="row">{item.category_id}</th>
                         <td>{item.category_name}</td>
-                        <td>2</td>
+                        <td>{item.number_course}</td>
                         <td>{item.subject_id}</td>
                         <td>
                           <button
@@ -78,7 +78,7 @@ export default function Category(props) {
                             <i class="fas fa-edit "></i>
                           </button>
                         </td>
-                        <td>
+                        {item.number_course===0?<td>
                           <button
                             type="button"
                             class="btn btn-primary"
@@ -86,7 +86,8 @@ export default function Category(props) {
                           >
                             <i class="fa fa-trash" aria-hidden="true"></i>
                           </button>
-                        </td>
+                        </td>:""}
+                        
                         {/* {2>1 ? (<td>
                           <button
                             type="button"

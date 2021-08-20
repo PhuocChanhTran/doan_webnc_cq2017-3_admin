@@ -114,7 +114,8 @@ export default function Course(props) {
                       {/* <img src="../../assets/images/big/img1.jpg" alt="user" /> */}
                       {/* <img src="http://localhost:3000/img/courses/1" alt="user" /> */}
                       <img
-                        src="https://img-c.udemycdn.com/course/240x135/851712_fc61_6.jpg"
+                        style = {{width:"400px",height:"200px"}}
+                        src={`http://localhost:3001/uploads/images/${item.course_image}`}
                         alt="user"
                       />
                       <div className="el-overlay">
@@ -122,7 +123,7 @@ export default function Course(props) {
                           <li className="el-item">
                             <a
                               className="btn default btn-outline image-popup-vertical-fit el-link"
-                              href="../../assets/images/big/img1.jpg"
+                              // href={`http://localhost:3001/uploads/images/${item.course_image}`}
                             >
                               <i className="mdi mdi-magnify-plus" />
                             </a>
@@ -143,6 +144,12 @@ export default function Course(props) {
                       <span className="text-muted">
                         {item.course_shortdescription}
                       </span>
+                      <h6 className="text-muted">
+                        Lecturer: {item.user_name}
+                      </h6>
+                      <h6 className="text-muted">
+                        Category: {item.category_name}
+                      </h6>
                       <br />
                       <div class="d-flex  justify-content-center">
                         <a
