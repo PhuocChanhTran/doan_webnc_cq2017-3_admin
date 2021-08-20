@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 let axios = Axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "https://bct-onlinecourses-be.herokuapp.com",
   // baseURL: "http://localhost:8000",
   headers: { "Content-Type": "application/json" },
 });

@@ -115,7 +115,7 @@ export default function Course(props) {
                       {/* <img src="http://localhost:3000/img/courses/1" alt="user" /> */}
                       <img
                         style = {{width:"400px",height:"200px"}}
-                        src={`http://localhost:3001/uploads/images/${item.course_image}`}
+                        src={`https://bct-onlinecourses-be.herokuapp.com/uploads/images/${item.course_image}`}
                         alt="user"
                       />
                       <div className="el-overlay">
