@@ -10,6 +10,8 @@ import AddCategoryPage from "./containers/AddCategoryPage/AddCategoryPage";
 import EditCategoryPage from "./containers/EditCategoryPage/EditCategoryPage";
 import DisableLecturePage from "./containers/DisableLecturePage/DisableLecturePage";
 import DisableLearnerPage from "./containers/DisableLearnerPage/DisableLearnerPage";
+import DisableCoursePage from "./containers/DisableCoursePage/DisableCoursePage";
+
 import "./App.css";
 import AdminLogin from "./containers/Auth/AdminLogin";
 import {LoginRoute} from "./utils/customRoute"
@@ -28,6 +30,9 @@ function App() {
         </LoginRoute>
         <LoginRoute exact path="/course">
           <CoursePage />
+        </LoginRoute>
+        <LoginRoute exact path="/disable-course">
+          <DisableCoursePage />
         </LoginRoute>
         <LoginRoute exact path="/add-lecture">
           <AddLecturePage />

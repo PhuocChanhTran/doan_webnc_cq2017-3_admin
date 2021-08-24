@@ -6,6 +6,7 @@ const defaultValue = {
     disableLecture:[],
     disableLearner:[],
     course:[],
+    disableCourse:[],
     category:[],
 };
 const appContext = createContext(defaultValue);

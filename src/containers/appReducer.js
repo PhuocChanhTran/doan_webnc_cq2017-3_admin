@@ -25,6 +25,11 @@ export default function appReducer(state, action) {
           ...state,
           disableLearner: action.payload.disableLearner,
         }
+      case 'initDisableCourse':
+        return {
+          ...state,
+          disableCourse: action.payload.disableCourse,
+        }
       case 'initCourse':
         return {
           ...state,
@@ -110,6 +115,14 @@ export default function appReducer(state, action) {
         return {
           ...state,
           disableLecture:state.disableLecture.filter(el=>el.user_id !== action.payload.user_id)
+          
+        }
+      }
+      case 'unDisableCourse':{
+        console.log("case UndisableLecture");
+        return {
+          ...state,
+          disableCourse:state.disableCourse.filter(el=>el.course_id !== action.payload.course_id)
           
         }
       }

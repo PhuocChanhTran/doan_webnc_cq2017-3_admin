@@ -8,6 +8,9 @@ export default function Header(props) {
     delete localStorage.refreshToken;
     history.push("/login");
   }
+  const btnHome_click = () =>{
+    history.push("/");
+  }
   return (
     <div>
       <header className="topbar" data-navbarbg="skin5">
@@ -16,7 +19,7 @@ export default function Header(props) {
             {/* ============================================================== */}
             {/* Logo */}
             {/* ============================================================== */}
-            <a className="navbar-brand" href="index.html">
+            <button className="navbar-brand button-custom" onClick={btnHome_click}>
               {/* Logo icon */}
               <b className="logo-icon ps-2">
                 {/*You can put here icon as well // <i class="wi wi-sunset"></i> //*/}
@@ -44,7 +47,7 @@ export default function Header(props) {
               {/* <img src="../../assets/images/logo-text.png" alt="homepage" class="light-logo" /> */}
               {/* </b> */}
               {/*End Logo icon */}
-            </a>
+            </button>
             {/* ============================================================== */}
             {/* End Logo */}
             {/* ============================================================== */}
@@ -82,7 +85,7 @@ export default function Header(props) {
               {/* ============================================================== */}
               {/* create new */}
               {/* ============================================================== */}
-              <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
                   href="#"
@@ -118,11 +121,11 @@ export default function Header(props) {
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
               {/* ============================================================== */}
               {/* Search */}
               {/* ============================================================== */}
-              <li className="nav-item search-box">
+              {/* <li className="nav-item search-box">
                 {" "}
                 <a
                   className="nav-link waves-effect waves-dark"
@@ -140,7 +143,7 @@ export default function Header(props) {
                     <i className="ti-close" />
                   </a>
                 </form>
-              </li>
+              </li> */}
             </ul>
             {/* ============================================================== */}
             {/* Right side toggle and nav items */}
@@ -149,7 +152,7 @@ export default function Header(props) {
               {/* ============================================================== */}
               {/* Comment */}
               {/* ============================================================== */}
-              <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
                   href="#"
@@ -180,7 +183,7 @@ export default function Header(props) {
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
               {/* ============================================================== */}
               {/* End Comment */}
               {/* ============================================================== */}

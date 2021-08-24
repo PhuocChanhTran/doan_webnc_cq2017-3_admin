@@ -1,15 +1,18 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
 
 import appContext from "../../appContext";
-import { delCourse, disableCourse } from "../../../services/app.service";
+import { delCourse, unDisableCourse } from "../../../services/app.service";
 import { FormSelect, Row } from "react-bootstrap";
 import Swal from "sweetalert2";
 
-export default function Course(props) {
+// const user_page_url = process.env.USER_PAGE_URL;
+
+export default function DisableCourse(props) {
   const { store, dispatch } = useContext(appContext);
   const history = useHistory();
-  const link = "http://localhost:3000/courses/";
+
+  const link = "https://bct-onlinecourse.netlify.app/courses/";
   console.log("store.course iss");
   console.log(store.course);
   const btnDel_Click = async function (course_id) {
@@ -23,24 +26,24 @@ export default function Course(props) {
       });
     }
   };
-  const btnDisable_Click = async function (course_id) {
+  const btnUnDisable_Click = async function (course_id) {
     Swal.fire({
-      title: "Do you want to disable this course?",
+      title: "Do you want to UnDisable this course?",
       showCancelButton: true,
-      confirmButtonText: `Disable`,
+      confirmButtonText: `UnDisable`,
     }).then(async (result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        const res = await disableCourse(course_id);
+        const res = await unDisableCourse(course_id);
         if (res.status === 200) {
           dispatch({
-            type: "disableCourse",
+            type: "unDisableCourse",
             payload: {
               course_id,
             },
           });
         }
-        Swal.fire("Disable!", "", "success");
+        Swal.fire("UnDisable!", "", "success");
       }
     });
   };
@@ -68,9 +71,14 @@ export default function Course(props) {
       ["filterType"]: e.target.value,
     });
   };
-  const btnListDisable_Click = function () {
-    history.push("/disable-course");
+  const btnBack_Click = function () {
+    history.push("/course");
   };
+
+  console.log("store.course trang disable course laf:");
+  console.log(store.course);
+  console.log("store.course trang disable course laf:");
+
   return (
     <div>
       <div className="page-wrapper">
@@ -82,24 +90,24 @@ export default function Course(props) {
             <div className="col-12 d-flex no-block align-items-center">
               <button
                 type="button"
-                className="btn btn-primary"
-                onClick={btnListDisable_Click}
+                className="btn btn-primary disablebtn"
+                onClick={btnBack_Click}
+                fab
               >
-                DisableList
+                <i className="fa fa-backward" aria-hidden="true"></i>
               </button>
-              <div className="float-right">
-                <span>
-                  <FormSelect
-                    onChange={(e) => handleCourseFilterChange(e)}
-                    defaultValue="default"
-                    style={{ width: "150px" }}
-                  >
-                    <option value="default">Default</option>
-                    <option value="byCategory">Sort by Category</option>
-                    <option value="byLecturer">Sort by Lecturer</option>
-                  </FormSelect>
-                </span>
-              </div>
+              {/* <h4 className="page-title">Full Width</h4> */}
+              <span>
+                <FormSelect
+                  onChange={(e) => handleCourseFilterChange(e)}
+                  defaultValue="default"
+                  style={{ width: "150px" }}
+                >
+                  <option value="default">Default</option>
+                  <option value="byCategory">Sort by Category</option>
+                  <option value="byLecturer">Sort by Lecturer</option>
+                </FormSelect>
+              </span>
               {/* <div className="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb">
@@ -126,10 +134,10 @@ export default function Course(props) {
           {/* Start Page Content */}
           {/* ============================================================== */}
           <div className="row el-element-overlay">
-            {store.course.map((item) =>
-              item.course_isdisable === 0 ? (
+            {store.disableCourse.map((item) =>
+              item.course_isdisable === 1 ? (
                 <div className="col-lg-3 col-md-6">
-                  <div className="card">
+                  <div className="card h-100">
                     <div className="el-card-item">
                       <div className="el-card-avatar el-overlay-1">
                         {" "}
@@ -137,7 +145,8 @@ export default function Course(props) {
                         {/* <img src="http://localhost:3000/img/courses/1" alt="user" /> */}
                         <img
                           style={{ width: "400px", height: "200px" }}
-                          src={`https://bct-onlinecourses-be.herokuapp.com/uploads/images/${item.course_image}`}
+                          src={`http://localhost:3001/uploads/images/${item.course_image}`}
+                          // src={`http://localhost:3001/uploads/images/course1.jpg`}
                           alt="user"
                         />
                         <div className="el-overlay">
@@ -194,9 +203,9 @@ export default function Course(props) {
                           <button
                             type="button"
                             className="btn btn-primary border"
-                            onClick={() => btnDisable_Click(item.course_id)}
+                            onClick={() => btnUnDisable_Click(item.course_id)}
                           >
-                            Disable
+                            UnDisable
                             {/* <i class="fa fa-trash" aria-hidden="true"></i> */}
                           </button>
                         </div>

@@ -2,6 +2,9 @@ import axios from "../utils/axios";
 export function getAllCourse() {
   return axios.get("/courses");
 }
+export function getDisableAllCourse() {
+  return axios.get("/courses/disable");
+}
 
 export function getCourseSingleCourse(courseId) {
   return axios.get(`/courses/${courseId}`);
@@ -59,6 +62,11 @@ export function disableUser(userId){
 }
 export function disableCourse(course_id){
   return axios.patch("/courses/disable", {
+    course_id: course_id,
+  });
+}
+export function unDisableCourse(course_id){
+  return axios.patch("/courses/undisable", {
     course_id: course_id,
   });
 }
