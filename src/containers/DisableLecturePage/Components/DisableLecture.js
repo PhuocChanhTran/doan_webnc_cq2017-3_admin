@@ -74,7 +74,7 @@ export default function DisableLecture(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {store.disableLecture.map((item) => (
+                    {store.disableLecture && store.disableLecture.length !== 0?store.disableLecture.map((item) => (
                       <tr>
                         <th scope="row">{item.user_id}</th>
                         <td>{item.user_username}</td>
@@ -101,7 +101,7 @@ export default function DisableLecture(props) {
                         </td>
                         
                       </tr>
-                    ))}
+                    )):''}
                     ;
                   </tbody>
                 </table>
